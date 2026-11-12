@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#07111f">
+<title>JARVIS Dashboard</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; min-height: 100vh; color: #eaf6ff;
+    font-family: system-ui, -apple-system, Segoe UI, sans-serif;
+    background: radial-gradient(circle at 50% 0%, #123c59 0, #081827 42%, #030811 100%);
+    display: grid; place-items: center; padding: 22px;
+  }
+  main { width: min(720px, 100%); }
+  .top { display:flex; justify-content:space-between; align-items:center; gap:12px; }
+  .eyebrow { color:#75d8ff; letter-spacing:.28em; font-size:.72rem; }
+  .pill { border:1px solid #23516a; color:#9be7ff; border-radius:999px; padding:7px 11px; font-size:.75rem; }
+  h1 { font-size:clamp(2.2rem, 8vw, 4rem); letter-spacing:.12em; margin:26px 0 4px; font-weight:500; }
+  .sub { color:#9bb7ca; margin:0 0 24px; }
+  .clock {
+    border:1px solid #1e6684; border-radius:22px; padding:24px;
+    background:linear-gradient(145deg, #0b2538cc, #071321dd);
+    box-shadow:0 0 35px #00bfff18, inset 0 0 28px #00bfff0b;
+  }
+  #time { font-size:clamp(2.8rem, 12vw, 5rem); font-variant-numeric:tabular-nums; letter-spacing:.04em; }
+  #date { color:#9bb7ca; margin-top:4px; }
+  .section { color:#75d8ff; letter-spacing:.18em; font-size:.72rem; margin:26px 0 12px; }
+  .grid { display:grid; grid-template-columns:repeat(2,1fr); gap:12px; }
+  a {
+    text-decoration:none; color:#eaf6ff; border:1px solid #24506a;
+    border-radius:16px; padding:17px; background:#0b1d2c;
+    display:block; min-height:86px;
+  }
+  a:active { background:#123b54; }
+  a strong { display:block; font-size:1rem; margin-bottom:5px; }
+  a span { color:#9bb7ca; font-size:.82rem; }
+  .note { color:#7893a7; font-size:.76rem; line-height:1.5; margin-top:22px; }
+  @media (max-width:420px) { .grid { grid-template-columns:1fr; } }
+</style>
+</head>
+<body>
+<main>
+  <div class="top"><div class="eyebrow">PERSONAL AI SYSTEM</div><div class="pill">● ONLINE</div></div>
+  <h1>J.A.R.V.I.S.</h1>
+  <p class="sub">Just A Rather Very Intelligent System</p>
+  <section class="clock">
+    <div id="time">--:--:--</div>
+    <div id="date">Loading local time…</div>
+  </section>
+  <div class="section">QUICK ACCESS</div>
+  <div class="grid">
+    <a href="https://chatgpt.com/"><strong>ChatGPT</strong><span>Open your AI assistant</span></a>
+    <a href="https://www.google.com/"><strong>Google</strong><span>Search and voice assistant</span></a>
+    <a href="https://support.google.com/assistant/"><strong>Voice Assistant Help</strong><span>Voice activation support</span></a>
+    <a href="https://help.openai.com/"><strong>System Help</strong><span>ChatGPT help and settings</span></a>
+  </div>
+  <p class="note">Prototype dashboard · Your tablet's live clock and quick links are active. Device controls and custom wake-word actions require separate setup and permissions.</p>
+</main>
+<script>
+function updateClock() {
+  const now = new Date();
+  document.getElementById('time').textContent = now.toLocaleTimeString([], {hour:'2-digit', minute:'2-digit', second:'2-digit'});
+  document.getElementById('date').textContent = now.toLocaleDateString([], {weekday:'long', year:'numeric', month:'long', day:'numeric'});
+}
+updateClock(); setInterval(updateClock, 1000);
+</script>
+</body>
+</html>
